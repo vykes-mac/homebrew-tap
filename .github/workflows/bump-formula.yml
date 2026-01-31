@@ -1,0 +1,33 @@
+name: Bump Formula
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g., 0.1.0 or v0.1.0)'
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update formula
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          chmod +x .github/scripts/update-formula.sh
+          .github/scripts/update-formula.sh
+
+      - name: Commit and push
+        run: |
+          VERSION="${{ inputs.version }}"
+          VERSION="${VERSION#v}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/appcheck.rb
+          git commit -m "appcheck ${VERSION}"
+          git push
