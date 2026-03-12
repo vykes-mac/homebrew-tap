@@ -1,13 +1,13 @@
 class Appcheck < Formula
   desc "Local tooling to capture app walkthroughs and upload artifacts"
   homepage "https://github.com/vykes-mac/appcheck"
-  version "0.2.0"
+  version "0.2.1"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/vykes-mac/appcheck-releases/releases/download/v#{version}/appcheck-darwin-arm64.tgz"
-      sha256 "90c016d47c8ec540fd78367a2bb22aee064b1d08ae1f80269cecdf123cd1b974"
+      sha256 "2fadb3cb10281d63cd44c5eedd56990f841a87d074af632c96b14c9f44c53a34"
 
       def install
         libexec.install "appcheck"
@@ -30,7 +30,7 @@ class Appcheck < Formula
 
     on_intel do
       url "https://github.com/vykes-mac/appcheck-releases/releases/download/v#{version}/appcheck-darwin-x64.tgz"
-      sha256 "b8af680754293d8a3c99a08e4b9128245bebae57751503cb889d7e33769f9e2f"
+      sha256 "c29560c8b62f9c4b34041ad7ff14abfa0e1dc12722a9f626bbe65192d909c7ac"
 
       def install
         libexec.install "appcheck"
